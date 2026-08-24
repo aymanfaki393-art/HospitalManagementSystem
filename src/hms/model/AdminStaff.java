@@ -21,4 +21,17 @@ public class AdminStaff extends User {
     public void editProfile() {
         System.out.println("Admin " + getName() + " is editing their profile.");//required because User declared an unfinished method that every non-abstract subclass MUST finish
     }
+    
+    public void createUser(String userId, String name) {
+        System.out.println("Admin " + getName() + " created new user: " + name + " (ID: " + userId + ")");
+
+        
+}
+    public void deleteUser (String userId){
+        System.out.println("Admin " + getName() + "Deleted user with Id:" + userId );
+    
+    }
+    
+    
+    
 }

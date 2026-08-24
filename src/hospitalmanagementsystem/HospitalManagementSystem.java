@@ -13,7 +13,8 @@ package hospitalmanagementsystem;
 
 import hms.model.Doctor;
 import hms.model.AdminStaff;
-
+import hms.model.Patient;
+import hms.model.MedicalManager;
 
 public class HospitalManagementSystem {
 
@@ -22,12 +23,21 @@ public class HospitalManagementSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Doctor doc1 = new Doctor("D001", "drAli", "1234", "Dr. Ali", "Dermatologist");
-        doc1.editProfile();
+       
         
         AdminStaff admin1 = new AdminStaff("AD001", "ad_omar", "1234", "Omar");
         System.out.println(admin1.getName());
-        admin1.editProfile();
+        
+        
+        admin1.createUser("P001", "Sarah");
+         
+        Patient Patient1 = new Patient("PAT001", "pat_Eve", "1234", "Evelyn", "2637982301");
+        System.out.println(Patient1.getName());
+        Patient1.editProfile();
+        
+        MedicalManager Manager1 = new MedicalManager("MG001", "MAG_bilal", "1234", " Sayyed Bilal");
+        System.out.println(Manager1.getName());
+        Manager1.editProfile();
         
         
         
