@@ -10,7 +10,7 @@ package hospitalmanagementsystem;
  *
  * @author HP
  */
-
+import hms.model.User;
 import hms.model.Doctor;
 import hms.model.AdminStaff;
 import hms.model.Patient;
@@ -39,7 +39,8 @@ public class HospitalManagementSystem {
         System.out.println(Manager1.getName());
         Manager1.editProfile();
         
-        
+        User someone = new Patient("P099", "test", "1234", "Test Person", "0123456789");
+        someone.editProfile();
         
 }
         
