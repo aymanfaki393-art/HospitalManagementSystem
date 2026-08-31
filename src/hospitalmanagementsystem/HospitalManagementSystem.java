@@ -15,6 +15,8 @@ import hms.model.Doctor;
 import hms.model.AdminStaff;
 import hms.model.Patient;
 import hms.model.MedicalManager;
+import hms.dao.UserDAO;
+import java.util.ArrayList;
 
 public class HospitalManagementSystem {
 
@@ -42,6 +44,31 @@ public class HospitalManagementSystem {
         User someone = new Patient("P099", "test", "1234", "Test Person", "0123456789");
         someone.editProfile();
         
+        UserDAO dao = new UserDAO();
+        
+        
+       AdminStaff admin2 = new AdminStaff("AD002", "ad_ayehsa", "1234", "Ayesha");
+       System.out.println(admin2.getName());
+       
+     
+       
+       
+       Doctor doc1 = new Doctor("D001", "drAli", "1234", "Dr. Ali", "Dermatologist");
+
+
+       UserDAO dao2 = new UserDAO();
+ArrayList<User> allUsers = dao2.loadAllUsers();
+
+for (User u : allUsers) {
+    System.out.println(u.getName());
+}
+
+        
+
+       
+       
+
+
 }
         
 
