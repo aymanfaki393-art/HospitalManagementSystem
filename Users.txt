@@ -1,5 +1,5 @@
 AD001,ad_omar,1234,Omar,AdminStaff
 PAT001,pat_Eve,1234,Evelyn,Patient
 MG001,MAG_bilal,1234, Sayyed Bilal,MedicalManager
-AD002,ad_ayehsa,1234,Ayesha,AdminStaff
+AD002,ad_ayesha,1234,Ayesha,AdminStaff
 D001,drAli,1234,Dr. Ali,Doctor

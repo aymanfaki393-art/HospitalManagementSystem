@@ -17,6 +17,7 @@ import hms.model.Patient;
 import hms.model.MedicalManager;
 import hms.dao.UserDAO;
 import java.util.ArrayList;
+import hms.service.LoginService;
 
 public class HospitalManagementSystem {
 
@@ -64,8 +65,21 @@ for (User u : allUsers) {
 }
 
         
+LoginService loginService = new LoginService();
+User loggedInUser = loginService.login("drAli", "1234");
 
+if (loggedInUser != null) {
+    System.out.println("Login successful! Welcome, " + loggedInUser.getName());
+} else {
+    System.out.println("Login failed. Invalid username or password.");
+}
        
+User failedLogin = loginService.login("drAli", "wrongpassword");
+if (failedLogin != null) {
+    System.out.println("Login successful! Welcome, " + failedLogin.getName());
+} else {
+    System.out.println("Login failed. Invalid username or password.");
+}
        
 
 

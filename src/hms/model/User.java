@@ -54,6 +54,11 @@ public abstract class User {
     
     }
     
+    public boolean checkPassword(String inputPassword) {
+        return this.password.equals(inputPassword);
+    
+    }
+    
     public abstract void editProfile();
     
     
