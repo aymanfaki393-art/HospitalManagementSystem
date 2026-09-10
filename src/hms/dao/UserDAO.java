@@ -74,6 +74,26 @@ public class UserDAO {
     return userList;
 }
     
+    public void deleteUser(String userIdToDelete) {
+    ArrayList<User> allUsers = loadAllUsers();
+
+    try {
+        FileWriter writer = new FileWriter("users.txt", false);
+
+        for (User u : allUsers) {
+            if (!u.getUserId().equals(userIdToDelete)) {
+                String line = u.getUserId() + "," + u.getUserName() + "," + u.getPassword() + "," + u.getName() + "," + u.getRole();
+                writer.write(line);
+                writer.write("\n");
+            }
+        }
+
+        writer.close();
+    } catch (IOException e) {
+        System.out.println("Error deleting user: " + e.getMessage());
+    }
+}
+    
 }
     
 
