@@ -4,9 +4,13 @@
  */
 package hms.gui;
 
+import hms.gui.admin.AdminDashboard;
 import hms.service.LoginService;
 import hms.model.User;
 import javax.swing.JOptionPane;
+import hms.gui.Doctor.DoctorDashboard;
+import hms.gui.Patient.PatientDashboard;
+import hms.gui.Manager.ManagerDashboard;
 /**
  *
  * @author HP
@@ -143,16 +147,29 @@ String username = usntxt.getText();
             AdminDashboard dashboard = new AdminDashboard();
             dashboard.setVisible(true);
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Login successful! Welcome, " + loggedInUser.getName());
+        } else if 
+            (loggedInUser.getRole().equals("Doctor")) {
+            DoctorDashboard dashboard = new DoctorDashboard();
+            dashboard.setVisible(true);
+            this.dispose();
+        } else if(loggedInUser.getRole().equals("Patient")) {
+            PatientDashboard dashboard = new PatientDashboard();
+            dashboard.setVisible(true);
+            this.dispose();
+    } 
+        else if(loggedInUser.getRole().equals("Manager")) {
+            ManagerDashboard dashboard = new ManagerDashboard();
+            dashboard.setVisible(true);
+            this.dispose();
         }
-    } else {
+        
+        else {
         JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
     }
 
          // TODO add your handling code here:
     }//GEN-LAST:event_LoginbtnActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
