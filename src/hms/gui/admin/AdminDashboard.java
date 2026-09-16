@@ -156,7 +156,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutbtnActionPerformed
 
     private void assignDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDoctorBtnActionPerformed
-        // TODO add your handling code here:
+        AssignDoctorFrame frame = new AssignDoctorFrame();
+        frame.setVisible(true);
     }//GEN-LAST:event_assignDoctorBtnActionPerformed
 
     private void manageUsersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUsersBtnActionPerformed
