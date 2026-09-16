@@ -58,9 +58,11 @@
                                   <Component id="addUserBtn" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="94" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="69" max="32767" attributes="0"/>
@@ -140,6 +142,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="addUserBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="deleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="updateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -248,11 +251,12 @@
         <Component class="javax.swing.JComboBox" name="roleCombo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="AdminStaff"/>
-                <StringItem index="1" value="Doctor"/>
-                <StringItem index="2" value="Patient"/>
-                <StringItem index="3" value="Medical Manager"/>
+              <StringArray count="5">
+                <StringItem index="0" value=""/>
+                <StringItem index="1" value="AdminStaff"/>
+                <StringItem index="2" value="Doctor"/>
+                <StringItem index="3" value="Patient"/>
+                <StringItem index="4" value="Medical Manager"/>
               </StringArray>
             </Property>
           </Properties>
@@ -283,6 +287,17 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="passwordField">
+        </Component>
+        <Component class="javax.swing.JButton" name="updateBtn">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Update"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBtnActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

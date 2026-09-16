@@ -25,6 +25,16 @@ public class ManageUsersFrame extends javax.swing.JFrame {
     public ManageUsersFrame() {
         initComponents();
         loadUserData();
+         
+
+    usersTable.getSelectionModel().addListSelectionListener(e -> {
+        int row = usersTable.getSelectedRow();
+        if (row != -1) {
+            idField.setText(usersTable.getValueAt(row, 0).toString());
+            nameField.setText(usersTable.getValueAt(row, 1).toString());
+        }
+    });
+        
     }
     private void loadUserData(){
         UserDAO dao = new UserDAO();
@@ -71,6 +81,7 @@ public class ManageUsersFrame extends javax.swing.JFrame {
         addUserBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         passwordField = new javax.swing.JPasswordField();
+        updateBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,7 +131,7 @@ public class ManageUsersFrame extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Manage Users");
 
-        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AdminStaff", "Doctor", "Patient", "Medical Manager" }));
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "AdminStaff", "Doctor", "Patient", "Medical Manager" }));
 
         addUserBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addUserBtn.setText("Add User");
@@ -135,6 +146,14 @@ public class ManageUsersFrame extends javax.swing.JFrame {
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);
+            }
+        });
+
+        updateBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
             }
         });
 
@@ -155,8 +174,10 @@ public class ManageUsersFrame extends javax.swing.JFrame {
                                 .addGap(177, 177, 177)
                                 .addComponent(addUserBtn)
                                 .addGap(18, 18, 18)
-                                .addComponent(deleteBtn)))
-                        .addContainerGap())
+                                .addComponent(deleteBtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateBtn)))
+                        .addContainerGap(94, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +238,8 @@ public class ManageUsersFrame extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addUserBtn)
-                            .addComponent(deleteBtn))
+                            .addComponent(deleteBtn)
+                            .addComponent(updateBtn))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -278,6 +300,32 @@ if (selectedRow == -1) {
     }        // TODO add your handling code here:
     }//GEN-LAST:event_deleteBtnActionPerformed
 
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+String id = idField.getText();
+    String username = usernameField.getText();
+    String password = passwordField.getText();
+    String name = nameField.getText();
+    String role = (String) roleCombo.getSelectedItem();
+
+    User updatedUser = null;
+    if (role.equals("AdminStaff")) {
+        updatedUser = new AdminStaff(id, username, password, name);
+    } else if (role.equals("Doctor")) {
+        updatedUser = new Doctor(id, username, password, name, "Unknown");
+    } else if (role.equals("Patient")) {
+        updatedUser = new Patient(id, username, password, name, "Unknown");
+    } else if (role.equals("MedicalManager")) {
+        updatedUser = new MedicalManager(id, username, password, name);
+    }
+
+    if (updatedUser != null) {
+        UserDAO dao = new UserDAO();
+        dao.updateUser(updatedUser);
+        JOptionPane.showMessageDialog(this, "User updated successfully!");
+        loadUserData();
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_updateBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +377,7 @@ if (selectedRow == -1) {
     private javax.swing.JTextField nameField;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JComboBox<String> roleCombo;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JTextField usernameField;
     private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
