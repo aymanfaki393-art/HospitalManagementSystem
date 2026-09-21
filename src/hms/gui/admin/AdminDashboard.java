@@ -32,6 +32,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         assignDoctorBtn = new javax.swing.JButton();
         manageAssetsBtn = new javax.swing.JButton();
         configureRatesBtn = new javax.swing.JButton();
+        labRequestsBtn = new javax.swing.JButton();
         logoutbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,6 +79,13 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         configureRatesBtn.setText("Configure Rates");
 
+        labRequestsBtn.setText("View Lab Requests");
+        labRequestsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                labRequestsBtnActionPerformed(evt);
+            }
+        });
+
         logoutbtn.setText("Logout");
         logoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +111,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                                     .addComponent(assignDoctorBtn)
                                     .addComponent(manageUsersBtn)
                                     .addComponent(manageAssetsBtn)
+                                    .addComponent(labRequestsBtn)
                                     .addComponent(configureRatesBtn))))
                         .addGap(0, 161, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -122,6 +131,8 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(assignDoctorBtn)
                 .addGap(29, 29, 29)
                 .addComponent(manageAssetsBtn)
+                .addGap(33, 33, 33)
+                .addComponent(labRequestsBtn)
                 .addGap(33, 33, 33)
                 .addComponent(configureRatesBtn)
                 .addGap(34, 34, 34)
@@ -163,6 +174,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         ManageUsersFrame frame = new ManageUsersFrame();
         frame.setVisible(true);
     }//GEN-LAST:event_manageUsersBtnActionPerformed
+
+    private void labRequestsBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        new LabRequestsFrame().setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
@@ -207,6 +222,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton logoutbtn;
     private javax.swing.JButton manageAssetsBtn;
+    private javax.swing.JButton labRequestsBtn;
     private javax.swing.JButton manageUsersBtn;
     // End of variables declaration//GEN-END:variables
 }
