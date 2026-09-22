@@ -78,6 +78,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
 
         configureRatesBtn.setText("Configure Rates");
+        configureRatesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                configureRatesBtnActionPerformed(evt);
+            }
+        });
 
         labRequestsBtn.setText("View Lab Requests");
         labRequestsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +164,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageAssetsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAssetsBtnActionPerformed
-        // TODO add your handling code here:
+        ManageAssetsFrame frame = new ManageAssetsFrame();
+        frame.setVisible(true);
     }//GEN-LAST:event_manageAssetsBtnActionPerformed
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
@@ -167,7 +173,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutbtnActionPerformed
 
     private void assignDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDoctorBtnActionPerformed
-        // TODO add your handling code here:
+        AssignDoctorFrame frame = new AssignDoctorFrame();
+        frame.setVisible(true);
     }//GEN-LAST:event_assignDoctorBtnActionPerformed
 
     private void manageUsersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUsersBtnActionPerformed
@@ -178,6 +185,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void labRequestsBtnActionPerformed(java.awt.event.ActionEvent evt) {
         new LabRequestsFrame().setVisible(true);
     }
+
+    private void configureRatesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configureRatesBtnActionPerformed
+        ConfigureRatesFrame frame = new ConfigureRatesFrame();
+        frame.setVisible(true);
+    }//GEN-LAST:event_configureRatesBtnActionPerformed
 
     /**
      * @param args the command line arguments
