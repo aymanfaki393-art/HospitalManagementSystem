@@ -23,9 +23,12 @@ public class Doctor extends User {
         System.out.println("Doctor " + getName() + " is editing their profile.");
     }
     
-    
     public String getSpecialty(){
         return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 }
     

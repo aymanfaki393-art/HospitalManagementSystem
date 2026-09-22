@@ -9,23 +9,23 @@ package hms.model;
  * @author HP
  */
 public class Patient extends User{
-    private String ContactNumber;
+    private String contactNumber;
     
-    public Patient (String userId, String username, String password, String name, String Contact_Number){
-    super(userId, username, password, name, "Patient");
-    this.ContactNumber = ContactNumber;
-    
-    
+    public Patient (String userId, String username, String password, String name, String contactNumber){
+        super(userId, username, password, name, "Patient");
+        this.contactNumber = contactNumber;
     }
     
     @Override
     public void editProfile(){
         System.out.println("Patient" + getName()+ " is editing their profile.");
-    
     }
     
     public String getContactnumber(){
-        return ContactNumber;
-    
+        return contactNumber;
+    }
+
+    public void setContactnumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 }

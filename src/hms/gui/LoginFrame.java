@@ -6,6 +6,7 @@ package hms.gui;
 
 import hms.gui.admin.AdminDashboard;
 import hms.service.LoginService;
+import hms.model.Doctor;
 import hms.model.User;
 import javax.swing.JOptionPane;
 import hms.gui.Doctor.DoctorDashboard;
@@ -142,14 +143,18 @@ String username = usntxt.getText();
     User loggedInUser = loginService.login(username, password);
 
    
-    if (loggedInUser != null) {
+    if (loggedInUser == null) {
+        JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
+        return;
+    }
+
         if (loggedInUser.getRole().equals("AdminStaff")) {
             AdminDashboard dashboard = new AdminDashboard();
             dashboard.setVisible(true);
             this.dispose();
         } else if 
             (loggedInUser.getRole().equals("Doctor")) {
-            DoctorDashboard dashboard = new DoctorDashboard();
+            DoctorDashboard dashboard = new DoctorDashboard((Doctor) loggedInUser);
             dashboard.setVisible(true);
             this.dispose();
         } else if(loggedInUser.getRole().equals("Patient")) {
@@ -157,19 +162,18 @@ String username = usntxt.getText();
             dashboard.setVisible(true);
             this.dispose();
     } 
-        else if(loggedInUser.getRole().equals("Manager")) {
+        else if (loggedInUser.getRole().equals("Manager")
+                || loggedInUser.getRole().equals("MedicalManager")) {
             ManagerDashboard dashboard = new ManagerDashboard();
             dashboard.setVisible(true);
             this.dispose();
         }
         
         else {
-        JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
-    }
+            JOptionPane.showMessageDialog(this, "Unknown user role.");
+        }
 
-         // TODO add your handling code here:
     }//GEN-LAST:event_LoginbtnActionPerformed
-    }
     /**
      * @param args the command line arguments
      */
