@@ -141,33 +141,6 @@ public class UserDAO {
             System.out.println("Error updating user: " + e.getMessage());
         }
     }
-    
-    
-    public void updateUser(User updatedUser) {
-    ArrayList<User> allUsers = loadAllUsers();
-
-    try {
-        FileWriter writer = new FileWriter("Users.txt", false);
-
-        for (User u : allUsers) {
-            if (u.getUserId().equals(updatedUser.getUserId())) {
-                String line = updatedUser.getUserId() + "," + updatedUser.getUserName() + "," + updatedUser.getPassword() + "," + updatedUser.getName() + "," + updatedUser.getRole();
-                writer.write(line);
-                writer.write("\n");
-            } else {
-                String line = u.getUserId() + "," + u.getUserName() + "," + u.getPassword() + "," + u.getName() + "," + u.getRole();
-                writer.write(line);
-                writer.write("\n");
-            }
-        }
-
-        writer.close();
-    } catch (IOException e) {
-        System.out.println("Error updating user: " + e.getMessage());
-    }
 }
     
-}
-    
-
 
