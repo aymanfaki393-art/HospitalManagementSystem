@@ -57,6 +57,20 @@ public class AppointmentService {
     }
 
     /**
+     * Lists every slot a patient may currently book, for all doctors.
+     *
+     * <p>This is the no-argument form of {@link #getAvailableSlots(String)}. Offering the same
+     * operation under one name with two different parameter lists is <em>method overloading</em>,
+     * or static polymorphism: the compiler decides which version runs from the arguments at the
+     * call site, so a screen that wants every doctor's slots does not have to pass a null.</p>
+     *
+     * @return the bookable slots of every doctor, ordered by date and then start time
+     */
+    public List<DoctorSlot> getAvailableSlots() {
+        return getAvailableSlots(null);
+    }
+
+    /**
      * Lists the slots a patient may currently book.
      *
      * <p>A slot qualifies when it is marked available and its start time has not already
