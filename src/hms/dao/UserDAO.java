@@ -34,7 +34,7 @@ public class UserDAO {
     }
     
     try {
-        FileWriter writer = new FileWriter ("user.txt", true);
+        FileWriter writer = new FileWriter ("Users.txt", true);
         writer.write(line.toString());
         writer.write("\n");
         writer.close();
@@ -53,7 +53,7 @@ public class UserDAO {
     ArrayList<User> userList = new ArrayList<>();
 
     try {
-        File file = new File("user.txt");
+        File file = new File("Users.txt");
         if (!file.exists()) {
             return userList;
         }
@@ -99,7 +99,7 @@ public class UserDAO {
     ArrayList<User> allUsers = loadAllUsers();
 
     try {
-        FileWriter writer = new FileWriter("user.txt", false);
+        FileWriter writer = new FileWriter("Users.txt", false);
 
         for (User u : allUsers) {
             if (!u.getUserId().equals(userIdToDelete)) {
@@ -118,7 +118,7 @@ public class UserDAO {
     public void updateUser(User updatedUser) {
         ArrayList<User> allUsers = loadAllUsers();
 
-        try (FileWriter writer = new FileWriter("user.txt", false)) {
+        try (FileWriter writer = new FileWriter("Users.txt", false)) {
             for (User user : allUsers) {
                 User userToWrite = user.getUserId().equals(updatedUser.getUserId()) ? updatedUser : user;
                 StringBuilder line = new StringBuilder();
