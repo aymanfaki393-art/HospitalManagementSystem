@@ -148,7 +148,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageAssetsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAssetsBtnActionPerformed
-        // TODO add your handling code here:
+        ManageAssetsFrame frame = new ManageAssetsFrame();
+        frame.setVisible(true);
     }//GEN-LAST:event_manageAssetsBtnActionPerformed
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed

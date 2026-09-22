@@ -5,37 +5,40 @@
 package hms.dao;
 import java.io.FileWriter;
 import java.io.IOException;
+import hms.model.Asset;
 import hms.model.Assignment;
 import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
 
+
+
 /**
  *
  * @author HP
  */
-public class AssignmentDAO {
-    public void saveAssignment(Assignment assignment){
-        String line = assignment.getDoctorId() + "," + assignment.getManagerId();
-        
+public class AssetDAO {
+    public void saveAsset(Asset asset){
+        String line = asset.getAssetId() + "," + asset.getAssetType() + "," + asset.getAssetName();
         try{
-            FileWriter writer = new FileWriter("Assignment.txt", true);
+            FileWriter writer = new FileWriter("Asset.txt", true);
             writer.write(line);
             writer.write("\n");
             writer.close();
         }
     catch (IOException e){
-        System.out.println("Error saving assignment: " + e.getMessage());
-    }
+        System.out.println("Error saving Asset: " + e.getMessage());
     }
     
     
-    public ArrayList<Assignment> loadAllAssignments() {
-    ArrayList<Assignment> assignmentList = new ArrayList<>();
-    File file = new File("Assignment.txt");
+    }
+    
+    public ArrayList<Asset> loadAllAssets() {
+    ArrayList<Asset> assetList = new ArrayList<>();
+    File file = new File("Asset.txt");
 
     if (!file.exists()) {
-        return assignmentList;
+        return assetList;
     }
 
     try {
@@ -45,14 +48,15 @@ public class AssignmentDAO {
             String line = scanner.nextLine();
             String[] parts = line.split(",");
 
-            Assignment a = new Assignment(parts[0], parts[1]);
-            assignmentList.add(a);
+            Asset a = new Asset(parts[0], parts[1], parts[2]);
+            assetList.add(a);
         }
 
     } catch (IOException e) {
-        System.out.println("Error loading assignments: " + e.getMessage());
+        System.out.println("Error loading Asset: " + e.getMessage());
     }
 
-    return assignmentList;
+    return assetList;
 }
+    
 }
