@@ -59,6 +59,7 @@ public class ManageAssetsFrame extends javax.swing.JFrame {
         assetTypeField = new javax.swing.JTextField();
         assetNameField = new javax.swing.JTextField();
         addAssetBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +104,13 @@ public class ManageAssetsFrame extends javax.swing.JFrame {
             }
         });
 
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -131,7 +139,9 @@ public class ManageAssetsFrame extends javax.swing.JFrame {
                             .addComponent(assetNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addComponent(addAssetBtn)))
+                        .addComponent(addAssetBtn)
+                        .addGap(62, 62, 62)
+                        .addComponent(backBtn)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -152,7 +162,9 @@ public class ManageAssetsFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(assetNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(addAssetBtn)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addAssetBtn)
+                    .addComponent(backBtn))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
@@ -192,6 +204,13 @@ public class ManageAssetsFrame extends javax.swing.JFrame {
         loadAssetData();
 
     }//GEN-LAST:event_addAssetBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        AdminDashboard dashboard = new AdminDashboard();
+    dashboard.setVisible(true);
+    this.dispose();
+        
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +253,7 @@ public class ManageAssetsFrame extends javax.swing.JFrame {
     private javax.swing.JTextField assetNameField;
     private javax.swing.JTextField assetTypeField;
     private javax.swing.JTable assetsTable;
+    private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

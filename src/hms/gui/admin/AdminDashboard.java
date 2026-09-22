@@ -77,6 +77,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
 
         configureRatesBtn.setText("Configure Rates");
+        configureRatesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                configureRatesBtnActionPerformed(evt);
+            }
+        });
 
         logoutbtn.setText("Logout");
         logoutbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +170,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         ManageUsersFrame frame = new ManageUsersFrame();
         frame.setVisible(true);
     }//GEN-LAST:event_manageUsersBtnActionPerformed
+
+    private void configureRatesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configureRatesBtnActionPerformed
+        ConfigureRatesFrame frame = new ConfigureRatesFrame();
+        frame.setVisible(true);
+    }//GEN-LAST:event_configureRatesBtnActionPerformed
 
     /**
      * @param args the command line arguments
