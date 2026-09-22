@@ -6,6 +6,7 @@ package hms.gui;
 
 import hms.gui.admin.AdminDashboard;
 import hms.service.LoginService;
+import hms.model.Patient;
 import hms.model.User;
 import javax.swing.JOptionPane;
 import hms.gui.Doctor.DoctorDashboard;
@@ -134,42 +135,67 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pswdtxtActionPerformed
 
+    /**
+     * Authenticates the credentials typed into the form and opens the dashboard that matches
+     * the user's role.
+     *
+     * <p>Three defects were corrected here while the Patient module was being integrated:</p>
+     * <ul>
+     *   <li>an unsuccessful login produced no message at all, because the {@code else} branch
+     *       belonged to the chain of role tests rather than to the null check;</li>
+     *   <li>medical managers were routed on the role string {@code "Manager"}, whereas
+     *       {@code hms.model.MedicalManager} stores {@code "MedicalManager"}, so a manager who
+     *       signed in correctly was shown nothing;</li>
+     *   <li>the patient dashboard was constructed without being told who had logged in, so it
+     *       could not display or modify that patient's data.</li>
+     * </ul>
+     *
+     * @param evt the action event raised by the Login button
+     */
     private void LoginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbtnActionPerformed
-String username = usntxt.getText();
-    String password = new String(pswdtxt.getPassword());
+        String username = usntxt.getText().trim();
+        String password = new String(pswdtxt.getPassword());
 
-    LoginService loginService = new LoginService();
-    User loggedInUser = loginService.login(username, password);
-
-   
-    if (loggedInUser != null) {
-        if (loggedInUser.getRole().equals("AdminStaff")) {
-            AdminDashboard dashboard = new AdminDashboard();
-            dashboard.setVisible(true);
-            this.dispose();
-        } else if 
-            (loggedInUser.getRole().equals("Doctor")) {
-            DoctorDashboard dashboard = new DoctorDashboard();
-            dashboard.setVisible(true);
-            this.dispose();
-        } else if(loggedInUser.getRole().equals("Patient")) {
-            PatientDashboard dashboard = new PatientDashboard();
-            dashboard.setVisible(true);
-            this.dispose();
-    } 
-        else if(loggedInUser.getRole().equals("Manager")) {
-            ManagerDashboard dashboard = new ManagerDashboard();
-            dashboard.setVisible(true);
-            this.dispose();
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Please enter both your username and your password.",
+                    "Login", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-        
-        else {
-        JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
-    }
 
-         // TODO add your handling code here:
+        LoginService loginService = new LoginService();
+        User loggedInUser = loginService.login(username, password);
+
+        if (loggedInUser == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Login failed. Invalid username or password.",
+                    "Login", JOptionPane.ERROR_MESSAGE);
+            pswdtxt.setText("");
+            return;
+        }
+
+        switch (loggedInUser.getRole()) {
+            case "AdminStaff":
+                new AdminDashboard().setVisible(true);
+                break;
+            case "Doctor":
+                new DoctorDashboard().setVisible(true);
+                break;
+            case "Patient":
+                new PatientDashboard((Patient) loggedInUser).setVisible(true);
+                break;
+            case "MedicalManager":
+                new ManagerDashboard().setVisible(true);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this,
+                        "Your account has an unrecognised role and cannot be opened.",
+                        "Login", JOptionPane.ERROR_MESSAGE);
+                return;
+        }
+        this.dispose();
     }//GEN-LAST:event_LoginbtnActionPerformed
-    }
+
     /**
      * @param args the command line arguments
      */

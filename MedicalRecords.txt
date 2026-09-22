@@ -1,0 +1,2 @@
+REC001,PAT001,D001,2026-09-15,BP 122/78; Temp 37.1C; Pulse 82,Acute bronchitis,Chest clear on auscultation. Advised rest and fluids for one week.
+REC002,PAT001,D002,2026-09-10,BP 118/76; Temp 36.6C; Pulse 74,Routine screening - no abnormality,Full blood count within normal range. Review in twelve months.

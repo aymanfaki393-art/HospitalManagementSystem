@@ -19,13 +19,23 @@ import hms.model.MedicalManager;
  * @author HP
  */
 public class UserDAO {
+
+    /**
+     * Single source of truth for the credential file name.
+     *
+     * <p>The file was previously written as {@code Users.txt} but read back as
+     * {@code users.txt}. Windows ignores the difference, but on any case-sensitive file
+     * system every login failed because the reader opened a file that did not exist.
+     * Routing every reference through one constant removes the possibility.</p>
+     */
+    private static final String USERS_FILE = "Users.txt";
     
     
     public void saveUser(User user){
     String line = user.getUserId() + "," + user.getUserName() + "," + user.getPassword() + "," + user.getName() + "," + user.getRole();
     
     try {
-        FileWriter writer = new FileWriter ("Users.txt", true);
+        FileWriter writer = new FileWriter (USERS_FILE, true);
         writer.write(line);
         writer.write("\n");
         writer.close();
@@ -44,13 +54,21 @@ public class UserDAO {
     ArrayList<User> userList = new ArrayList<>();
 
     try {
-        File file = new File("users.txt");
-        Scanner scanner = new Scanner(file);
+        File file = new File(USERS_FILE);
+        if (!file.exists()) {
+            return userList;
+        }
 
+        Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] parts = line.split(",");
-            
+
+            // A short or blank line is skipped rather than aborting the entire load.
+            if (parts.length < 5) {
+                continue;
+            }
+
             if (parts[4].equals("Doctor")) {
     Doctor d = new Doctor(parts[0], parts[1], parts[2], parts[3], "Unknown");
     userList.add(d);
@@ -66,6 +84,7 @@ public class UserDAO {
     userList.add(m);
 }
         }
+        scanner.close();
 
     } catch (IOException e) {
         System.out.println("Error loading users: " + e.getMessage());
@@ -78,7 +97,7 @@ public class UserDAO {
     ArrayList<User> allUsers = loadAllUsers();
 
     try {
-        FileWriter writer = new FileWriter("users.txt", false);
+        FileWriter writer = new FileWriter(USERS_FILE, false);
 
         for (User u : allUsers) {
             if (!u.getUserId().equals(userIdToDelete)) {
@@ -99,7 +118,7 @@ public class UserDAO {
     ArrayList<User> allUsers = loadAllUsers();
 
     try {
-        FileWriter writer = new FileWriter("Users.txt", false);
+        FileWriter writer = new FileWriter(USERS_FILE, false);
 
         for (User u : allUsers) {
             if (u.getUserId().equals(updatedUser.getUserId())) {

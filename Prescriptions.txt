@@ -1,0 +1,2 @@
+PRE001,PAT001,D001,2026-09-15,Amoxicillin,500mg three times daily,Complete the full seven-day course even if symptoms improve.
+PRE002,PAT001,D001,2026-09-15,Paracetamol,500mg as required,Maximum four doses in twenty-four hours. Take with food.

@@ -3,3 +3,17 @@ Users.txt
 assignment.txt
 
 /dist/
+
+# Runtime activity log produced by hms.util.AppLogger
+hms_activity.log
+
+# NetBeans / IDE local state
+/nbproject/private/
+/build/
+/dist/
+
+# Report deliverables kept locally, submitted to Moodle rather than to Git
+/report/
+
+# Files delivered into this folder by the Claude desktop app
+/Claude outputs/
