@@ -1,0 +1,5 @@
+Paracetamol,Panadol,C8H9NO2,Available
+Amoxicillin,Amoxil,C16H19N3O4S,Available
+Ibuprofen,Advil,C13H18O2,Available
+Metformin,Glucophage,C4H11N5,Available
+Aspirin,Bayer,C9H8O4,Unavailable
