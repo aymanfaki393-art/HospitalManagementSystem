@@ -1,0 +1,8 @@
+D999,testdoc,1234,Test Doctor,Doctor,General Medicine
+P001,palice,1234,Alice Smith,Patient,0712345678
+P002,pbob,1234,Bob Jones,Patient,0712345679
+P003,pcarol,1234,Carol White,Patient,0712345680
+P004,pdavid,1234,David Brown,Patient,0712345681
+P005,peva,1234,Eva Green,Patient,0712345682
+P006,pfrank,1234,Frank Black,Patient,0712345683
+P007,pgrace,1234,Grace Hall,Patient,0712345684
