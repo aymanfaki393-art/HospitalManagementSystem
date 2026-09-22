@@ -2,6 +2,7 @@ package hms.dao;
 
 import hms.model.Appointment;
 import hms.model.AppointmentStatus;
+import hms.model.Patient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +85,21 @@ public class AppointmentDAO extends TextFileDAO<Appointment> {
             }
         }
         return result;
+    }
+
+    /**
+     * Lists every appointment belonging to one patient, identified by the patient object.
+     *
+     * <p>An overload of {@link #findByPatient(String)}. Callers that already hold a
+     * {@link Patient} need not reach inside it for the identifier, and callers that hold only
+     * an identifier are still served by the other form. Both names are the same; the compiler
+     * selects between them from the argument type, which is static polymorphism.</p>
+     *
+     * @param patient the patient whose appointments are wanted
+     * @return the patient's appointments, in file order
+     */
+    public List<Appointment> findByPatient(Patient patient) {
+        return findByPatient(patient.getUserId());
     }
 
     /**

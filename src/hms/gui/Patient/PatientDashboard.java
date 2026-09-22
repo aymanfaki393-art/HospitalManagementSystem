@@ -608,7 +608,7 @@ public class PatientDashboard extends JFrame {
             return;
         }
 
-        List<DoctorSlot> options = appointmentService.getAvailableSlots(null);
+        List<DoctorSlot> options = appointmentService.getAvailableSlots();
         if (options.isEmpty()) {
             showError("There are no free consultation slots to move this appointment to.");
             return;
