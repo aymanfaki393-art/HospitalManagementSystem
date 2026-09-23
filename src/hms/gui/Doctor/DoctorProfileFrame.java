@@ -8,6 +8,7 @@ import javax.swing.*;
 public class DoctorProfileFrame extends JFrame {
     private final Doctor doctor;
     private final UserDAO userDAO = new UserDAO();
+    private final Runnable onProfileSaved;
 
     private final JTextField nameField;
     private final JTextField usernameField;
@@ -15,14 +16,20 @@ public class DoctorProfileFrame extends JFrame {
     private final JPasswordField passwordField;
 
     public DoctorProfileFrame(Doctor doctor) {
+        this(doctor, null);
+    }
+
+    public DoctorProfileFrame(Doctor doctor, Runnable onProfileSaved) {
         this.doctor = doctor;
+        this.onProfileSaved = onProfileSaved;
 
         setTitle("Doctor Profile");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(420, 320);
+        setSize(520, 390);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(5, 2, 12, 12));
+        JPanel panel = DoctorTheme.backgroundPanel();
+        panel.setLayout(new GridLayout(5, 2, 12, 12));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         panel.add(new JLabel("Doctor ID:"));
@@ -49,10 +56,26 @@ public class DoctorProfileFrame extends JFrame {
         panel.add(passwordField);
 
         JButton saveBtn = new JButton("Save Profile");
+        saveBtn.setBackground(DoctorTheme.BLUE);
+        saveBtn.setForeground(Color.WHITE);
+        saveBtn.setFocusPainted(false);
+        saveBtn.setFont(new Font("Segoe UI", Font.BOLD, 13));
         saveBtn.addActionListener(evt -> saveProfile());
 
+        JButton exitBtn = new JButton("Exit");
+        exitBtn.setBackground(DoctorTheme.NAVY);
+        exitBtn.setForeground(Color.WHITE);
+        exitBtn.setFocusPainted(false);
+        exitBtn.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        exitBtn.addActionListener(evt -> dispose());
+
+        JPanel actions = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 5));
+        actions.setOpaque(false);
+        actions.add(saveBtn);
+        actions.add(exitBtn);
+
         add(panel, BorderLayout.CENTER);
-        add(saveBtn, BorderLayout.SOUTH);
+        add(actions, BorderLayout.SOUTH);
     }
 
     private void saveProfile() {
@@ -75,6 +98,9 @@ public class DoctorProfileFrame extends JFrame {
         doctor.setSpecialty(specialty);
         doctor.setPassword(password);
         userDAO.updateUser(doctor);
+        if (onProfileSaved != null) {
+            onProfileSaved.run();
+        }
         JOptionPane.showMessageDialog(this, "Profile updated successfully.");
         dispose();
     }

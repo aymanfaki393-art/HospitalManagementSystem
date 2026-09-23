@@ -9,7 +9,7 @@ import hms.service.LoginService;
 import hms.model.Doctor;
 import hms.model.User;
 import javax.swing.JOptionPane;
-import hms.gui.Doctor.DoctorDashboard;
+import hms.gui.Doctor.DoctorMainMenuFrame;
 import hms.gui.Patient.PatientDashboard;
 import hms.gui.Manager.ManagerDashboard;
 /**
@@ -154,7 +154,7 @@ String username = usntxt.getText();
             this.dispose();
         } else if 
             (loggedInUser.getRole().equals("Doctor")) {
-            DoctorDashboard dashboard = new DoctorDashboard((Doctor) loggedInUser);
+            DoctorMainMenuFrame dashboard = new DoctorMainMenuFrame((Doctor) loggedInUser);
             dashboard.setVisible(true);
             this.dispose();
         } else if(loggedInUser.getRole().equals("Patient")) {
