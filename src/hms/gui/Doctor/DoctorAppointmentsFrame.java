@@ -37,6 +37,10 @@ public class DoctorAppointmentsFrame extends JFrame {
     };
     private final JTable table = new JTable(tableModel);
 
+    public DoctorAppointmentsFrame() {
+        this(new Doctor("D-DEMO", "doctor.demo", "1234", "Dr. Demo", "General Medicine"));
+    }
+
     public DoctorAppointmentsFrame(Doctor doctor) {
         this.doctor = doctor;
         setTitle("Appointments and Patients - " + doctor.getName());
@@ -191,5 +195,9 @@ public class DoctorAppointmentsFrame extends JFrame {
         history.setVisible(true);
         history.toFront();
         history.requestFocus();
+    }
+
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> new DoctorAppointmentsFrame().setVisible(true));
     }
 }

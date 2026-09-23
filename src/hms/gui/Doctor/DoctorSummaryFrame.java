@@ -16,6 +16,10 @@ public class DoctorSummaryFrame extends JFrame {
     private final Doctor doctor;
     private final DoctorService service = new DoctorService();
 
+    public DoctorSummaryFrame() {
+        this(new Doctor("D-DEMO", "doctor.demo", "1234", "Dr. Demo", "General Medicine"));
+    }
+
     public DoctorSummaryFrame(Doctor doctor) {
         this.doctor = doctor;
         setTitle("Doctor Summary - " + doctor.getName());
@@ -80,5 +84,9 @@ public class DoctorSummaryFrame extends JFrame {
         panel.add(number);
         panel.add(label);
         return panel;
+    }
+
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> new DoctorSummaryFrame().setVisible(true));
     }
 }

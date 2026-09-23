@@ -15,6 +15,10 @@ public class DoctorProfileFrame extends JFrame {
     private final JTextField specialtyField;
     private final JPasswordField passwordField;
 
+    public DoctorProfileFrame() {
+        this(new Doctor("D-DEMO", "doctor.demo", "1234", "Dr. Demo", "General Medicine"));
+    }
+
     public DoctorProfileFrame(Doctor doctor) {
         this(doctor, null);
     }
@@ -103,5 +107,9 @@ public class DoctorProfileFrame extends JFrame {
         }
         JOptionPane.showMessageDialog(this, "Profile updated successfully.");
         dispose();
+    }
+
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> new DoctorProfileFrame().setVisible(true));
     }
 }

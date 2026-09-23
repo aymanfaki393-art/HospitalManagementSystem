@@ -52,6 +52,10 @@ public class DoctorConsultationFrame extends JFrame {
     private final JComboBox<String> labTestField = new JComboBox<>();
     private final JTextArea labNotesArea = new JTextArea(7, 35);
 
+    public DoctorConsultationFrame() {
+        this(new Doctor("D-DEMO", "doctor.demo", "1234", "Dr. Demo", "General Medicine"));
+    }
+
     public DoctorConsultationFrame(Doctor doctor) {
         this.doctor = doctor;
         setTitle("Patient Consultation - " + doctor.getName());
@@ -369,5 +373,9 @@ public class DoctorConsultationFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "Unable to read " + fileName + ".");
         }
         return options.toArray(new String[0]);
+    }
+
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> new DoctorConsultationFrame().setVisible(true));
     }
 }

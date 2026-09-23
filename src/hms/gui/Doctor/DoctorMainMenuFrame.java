@@ -1,6 +1,7 @@
 package hms.gui.Doctor;
 
 import hms.model.Doctor;
+import hms.service.DoctorService;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,6 +20,10 @@ import javax.swing.JPanel;
 public class DoctorMainMenuFrame extends JFrame {
     private final Doctor doctor;
     private JLabel subtitle;
+
+    public DoctorMainMenuFrame() {
+        this(new Doctor("D-DEMO", "doctor.demo", "1234", "Dr. Demo", "General Medicine"));
+    }
 
     public DoctorMainMenuFrame(Doctor doctor) {
         this.doctor = doctor;
@@ -124,10 +129,13 @@ public class DoctorMainMenuFrame extends JFrame {
     }
 
     private void refreshDoctorDetails() {
-        setTitle("Doctor's Dashboard - " + doctor.getName());
         if (subtitle != null) {
             subtitle.setText("Welcome, " + doctor.getName() + "  |  " + doctor.getSpecialty());
         }
+        setTitle("Doctor's Dashboard - " + doctor.getName());
     }
 
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> new DoctorMainMenuFrame().setVisible(true));
+    }
 }

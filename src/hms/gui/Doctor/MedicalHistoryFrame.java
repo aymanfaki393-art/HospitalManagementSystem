@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class MedicalHistoryFrame extends JFrame {
+    public MedicalHistoryFrame() {
+        this(new Doctor("D-DEMO", "doctor.demo", "1234", "Dr. Demo", "General Medicine"), "P001", "Demo Patient");
+    }
+
     public MedicalHistoryFrame(Doctor doctor, String patientId, String patientName) {
         setTitle("Medical History - " + patientId);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -99,5 +103,9 @@ public class MedicalHistoryFrame extends JFrame {
         notes.setForeground(DoctorTheme.TEXT);
         card.add(notes, BorderLayout.SOUTH);
         return card;
+    }
+
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> new MedicalHistoryFrame().setVisible(true));
     }
 }
