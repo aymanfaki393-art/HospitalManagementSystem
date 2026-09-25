@@ -81,6 +81,20 @@ if (failedLogin != null) {
     System.out.println("Login failed. Invalid username or password.");
 }
        
+try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    java.awt.EventQueue.invokeLater(() -> {
+        new hms.gui.LoginFrame().setVisible(true);
+    });
 
 
 }

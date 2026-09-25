@@ -36,7 +36,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setForeground(new java.awt.Color(255, 102, 102));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -158,7 +158,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_manageAssetsBtnActionPerformed
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_logoutbtnActionPerformed
 
     private void assignDoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDoctorBtnActionPerformed
