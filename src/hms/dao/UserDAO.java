@@ -44,7 +44,7 @@ public class UserDAO {
     ArrayList<User> userList = new ArrayList<>();
 
     try {
-        File file = new File("users.txt");
+        File file = new File("Users.txt");
         Scanner scanner = new Scanner(file);
 
         while (scanner.hasNextLine()) {
@@ -78,7 +78,7 @@ public class UserDAO {
     ArrayList<User> allUsers = loadAllUsers();
 
     try {
-        FileWriter writer = new FileWriter("users.txt", false);
+        FileWriter writer = new FileWriter("Users.txt", false);
 
         for (User u : allUsers) {
             if (!u.getUserId().equals(userIdToDelete)) {

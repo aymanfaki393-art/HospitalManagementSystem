@@ -1,1 +1,2 @@
 RX1790323179323,PAT001,D001,Paracetamol,500mg twice daily,2026-09-25
+RX1790416462369,PAT002,D001,Panadrex,1 tablet after dinner,2026-09-26

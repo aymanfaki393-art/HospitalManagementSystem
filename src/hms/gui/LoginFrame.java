@@ -240,7 +240,7 @@ String username = usntxt.getText();
             dashboard.setVisible(true);
             this.dispose();
     } 
-        else if(loggedInUser.getRole().equals("Manager")) {
+        else if(loggedInUser.getRole().equals("ManagerManager")) {
             ManagerDashboard dashboard = new ManagerDashboard();
             dashboard.setVisible(true);
             this.dispose();
