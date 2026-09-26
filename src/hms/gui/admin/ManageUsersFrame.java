@@ -153,7 +153,7 @@ public class ManageUsersFrame extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Manage Users");
 
-        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AdminStaff", "Doctor", "Patient", "Medical Manager" }));
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AdminStaff", "Doctor", "Patient", "MedicalManager" }));
 
         addUserBtn.setBackground(new java.awt.Color(204, 255, 255));
         addUserBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

@@ -240,11 +240,12 @@ String username = usntxt.getText();
             dashboard.setVisible(true);
             this.dispose();
     } 
-        else if(loggedInUser.getRole().equals("ManagerManager")) {
+        else if(loggedInUser.getRole().equals("MedicalManager")) {
             ManagerDashboard dashboard = new ManagerDashboard();
             dashboard.setVisible(true);
             this.dispose();
         }
+}
         
         else {
         JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
@@ -252,7 +253,8 @@ String username = usntxt.getText();
 
          // TODO add your handling code here:
     }//GEN-LAST:event_LoginbtnActionPerformed
-    }
+    
+    
     /**
      * @param args the command line arguments
      */

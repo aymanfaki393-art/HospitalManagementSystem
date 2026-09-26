@@ -296,7 +296,7 @@
                 <StringItem index="0" value="AdminStaff"/>
                 <StringItem index="1" value="Doctor"/>
                 <StringItem index="2" value="Patient"/>
-                <StringItem index="3" value="Medical Manager"/>
+                <StringItem index="3" value="MedicalManager"/>
               </StringArray>
             </Property>
           </Properties>
